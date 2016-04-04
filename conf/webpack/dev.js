@@ -44,5 +44,8 @@ export default {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new HtmlWebpackPlugin({ template: 'src/assets/index.html' })
-    ]
+    ],
+	devServer: {
+		historyApiFallback: true
+	}
 };

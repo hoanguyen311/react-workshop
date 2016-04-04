@@ -1,0 +1,35 @@
+.rating {
+
+}
+.rating__stars {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 13px;
+    white-space: nowrap;
+    font-size: 13px;
+    line-height: 13px;
+}
+.rating__stars-bar_active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.rating__star_color_grey {
+    width: 11px;
+    height: 13px;
+    background-position: 90.76923076923077% 55.172413793103445%;
+    background-repeat: no-repeat;
+}
+.rating__star_color_orange {
+    width: 11px;
+    height: 13px;
+    background-position: 90.76923076923077% 66.37931034482759%;
+    background-repeat: no-repeat;
+}
+.rating__number {
+    position: relative;
+    top: -1px;
+    color: #4c4849;
+}

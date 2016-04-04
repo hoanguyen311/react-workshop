@@ -1,0 +1,30 @@
+.switcher {
+    position: relative;
+    display: inline-block;
+}
+.switcher__list {
+    position: relative;
+    top: -3px;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.switcher__item {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-right: 0;
+    margin-left: 10px;
+    padding: 0;
+    width: 25px;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    text-decoration: none;
+    line-height: 1;
+    cursor: pointer;
+}
+.switcher__item:first-of-type {
+    margin: 0 -0.25em 0 10px;
+}

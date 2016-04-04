@@ -1,0 +1,15 @@
+.thumbnails {
+	text-align: center;
+	display: table;
+	width: 100%;
+}
+	.thumbnails__main-image {
+		display: table-cell;
+	}
+	.thumbnails__list {
+		display: table-cell;
+		vertical-align: top;
+	}
+	.thumbnails__item {
+		display: block;
+	}

@@ -1,0 +1,14 @@
+.product-details {
+
+}
+	.product-details__images {
+		width: 300px;
+		margin: 0 auto;
+	}
+	.product-details__back-link {
+		cursor: pointer;
+		display: inline-block;
+	}
+	.product-details__wrap {}
+	.product-details__name {}
+	.product-details__sale {}

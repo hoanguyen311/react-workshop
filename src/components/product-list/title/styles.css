@@ -1,0 +1,18 @@
+.title {
+    position: relative;
+}
+.title__heading {
+    position: relative;
+    display: block;
+    margin: 0 0 5px;
+    padding: 0;
+    vertical-align: bottom;
+    font-weight: 100;
+    font-size: 25px;
+    line-height: 25px;
+}
+.title__sub-heading {
+    text-transform: capitalize;
+    font-size: 12px;
+    line-height: 1.3em;
+}
