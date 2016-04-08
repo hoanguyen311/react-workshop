@@ -1,15 +1,15 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import ProductCard from './component';
-import {loadSingleProduct} from '~/actions';
+
 function mapStateToProps() {
-	return {};
+    return {};
 }
 
 function mapDispatchToProps(dispatch) {
-	return {};
+    return {};
 }
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(ProductCard);

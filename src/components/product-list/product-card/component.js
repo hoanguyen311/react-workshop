@@ -1,42 +1,78 @@
 import React from 'react';
 import Rating from '#rating';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
+import { blockFactory } from 'rebem';
+import { stringify } from 'rebem-classname';
+
+const Block = blockFactory('product-card');
+const LinkFactory = React.createFactory(Link);
 
 export default class ProductCard extends React.Component {
+    renderProductInfo() {
+        const {
+            price,
+            max_price,
+            max_saving_percentage,
+            ratings_total
+        } = this.props.data;
+
+        return Block({ elem: 'product-info' },
+            Block({ elem: 'price' }, price),
+            Block({ elem: 'sale' }, `- ${max_saving_percentage}%`),
+            Block({ elem: 'old-price-container' },
+                Block({ elem: 'old-price' }, max_price)
+            ),
+            Block({ elem: 'rating' },
+                Rating({ ratingNum: ratings_total })
+            ),
+            Block({ elem: 'button-buy' },
+                Block({ elem: 'button-buy-text' }, 'BUY NOW')
+            )
+        );
+    }
+    renderImage() {
+        const image = this.props.images[0].path;
+
+        return Block(
+            { elem: 'image-container' },
+            Block(
+                { tag: 'img', elem: 'image', src: image, alt: image }
+            )
+        );
+    }
+    renderLink(children) {
+        const { sku } = this.props.data;
+        const className = stringify({
+            block: 'product-card',
+            elem: 'anchor'
+        });
+
+        return LinkFactory({
+            className,
+            to: `/p/${sku}`
+        }, ...children);
+    }
+    renderName() {
+        const { name } = this.props.data;
+
+        return Block(
+            { elem: 'name-wrap' },
+            Block({ elem: 'name' }, name)
+        );
+    }
     render() {
-		let {selectedView, data, images} = this.props;
-        let {name, url, price, max_price, max_saving_percentage, ratings_total, sku} = data;
-		let image = images[0].path;
-        return (
-            <div block="product-card" mods={{view: selectedView}}>
-                <Link className="product-card__anchor"
-					to={`/p/${sku}`}
-				>
-                    <div block="product-card" elem="image-container">
-                        <img alt={name}
-							 block="product-card" elem="image"
-							src={image} />
-                    </div>
-                    <div block="product-card" elem="description">
-                        <div block="product-card" elem="name-wrap">
-                            <span block="product-card" elem="name">{name}</span>
-                        </div>
-                        <div block="product-card" elem="product-info">
-                            <div block="product-card" elem="price">{price}</div>
-                            <div block="product-card" elem="sale">{`- ${max_saving_percentage}%`}</div>
-                            <div block="product-card" elem="old-price-container">
-                                <div block="product-card" elem="old-price">{max_price}</div>
-                            </div>
-                            <div block="product-card" elem="rating">
-                                <Rating ratingNum={ratings_total}/>
-                            </div>
-                            <div block="product-card" elem="button-buy">
-                                <div className="button-buy__text" block="product-card" elem="button-buy-text">BUY NOW</div>
-                            </div>
-                        </div>
-                    </div>
-                </Link>
-            </div>
+        const { selectedView } = this.props;
+
+        return Block(
+            { mods: { view: selectedView } },
+            this.renderLink([
+                this.renderImage(),
+                Block(
+                    { elem: 'description' },
+                    this.renderName(),
+                    this.renderProductInfo()
+                )
+            ])
         );
     }
 }
