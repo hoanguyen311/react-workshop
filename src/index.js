@@ -22,7 +22,12 @@ const store = finalCreateStore(reducer, {
         productData: []
     },
     app: {
-        isLoading: false
+        isLoading: false,
+        showCartPopup: false
+    },
+    cart: {
+        items: [],
+        loading: false
     }
 });
 

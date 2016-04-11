@@ -12,11 +12,9 @@ function getSingleProduct(products, sku) {
     };
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        data: getSingleProduct(state.catalog.productData.results, ownProps.params.sku)
-    };
-};
+const mapStateToProps = (state, ownProps) => ({
+    data: getSingleProduct(state.catalog.productData.results, ownProps.params.sku)
+});
 
 const mapDispatchToProps = (dispatch) => {
     return {};

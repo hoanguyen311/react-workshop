@@ -25,10 +25,23 @@ export default class ProductCard extends React.Component {
             Block({ elem: 'rating' },
                 Rating({ ratingNum: ratings_total })
             ),
-            Block({ elem: 'button-buy' },
+            Block(
+                {
+                    elem: 'button-buy',
+                    onClick: this.buyNowClickHandler.bind(this)
+                },
                 Block({ elem: 'button-buy-text' }, 'BUY NOW')
             )
         );
+    }
+    buyNowClickHandler(e) {
+        const { sku } = this.props.data;
+
+        e.stopPropagation();
+        e.preventDefault();
+        if (this.props.buyNowClickHandler) {
+            this.props.buyNowClickHandler(sku);
+        }
     }
     renderImage() {
         const image = this.props.images[0].path;

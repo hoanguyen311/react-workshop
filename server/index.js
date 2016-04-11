@@ -1,9 +1,21 @@
 import data from './data.json';
-import request from 'superagent';
-import jsonp from 'superagent-jsonp';
+const cartItems = [];
 
-export default function(timeout = 1000) {
+function addItemToCart(sku) {
+    const existedItem = cartItems.find((item) => item.sku === sku);
 
+    if (existedItem) {
+        existedItem.quantity += 1;
+    } else {
+        cartItems.push({
+            sku,
+            quantity: 1
+        });
+    }
+}
+
+
+function getProductData(timeout = 1000) {
     return new Promise(function (resolve, reject) {
         setTimeout(() => {
             resolve(data.metadata);
@@ -11,6 +23,20 @@ export default function(timeout = 1000) {
     });
 }
 
-function ABC(err, res) {
-	console.log(res);
+function addProductToCart(sku, timeout = 1000) {
+    return new Promise(function(resolve, reject) {
+        setTimeout(() => {
+            if (sku) {
+                addItemToCart(sku);
+                resolve(cartItems);
+            } else {
+                reject('Error');
+            }
+        }, timeout);
+    });
 }
+
+export default {
+    getProductData,
+    addProductToCart
+};

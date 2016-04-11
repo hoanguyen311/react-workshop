@@ -1,17 +1,15 @@
 import { connect } from 'react-redux';
-import App from './component';
-import { getProductData } from '~/actions';
+import Popup from './component';
+import { toggleCartPopup } from '~/actions';
 
-const mapStateToProps = (state) => {
-    return {
-        ...state.app
-    };
+const mapStateToProps = (state, ownProps) => {
+    return {};
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        onMount() {
+        closeClickHandler() {
             dispatch(
-                getProductData()
+                toggleCartPopup(false)
             );
         }
     };
@@ -20,4 +18,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(App);
+)(Popup);

@@ -1,14 +1,15 @@
 export default function(state = {}, action) {
     switch (action.type) {
-        case 'TOGGLE_APP_LOADING':
+        case 'SHOW_CART_POPUP':
             return {
                 ...state,
-                isLoading: action.isLoading
+                loading: false,
+                items: action.cartItems
             };
-        case 'TOGGLE_CART_POPUP':
+        case 'LOAD_CART_POPUP':
             return {
                 ...state,
-                showCartPopup: action.showCartPopup
+                loading: true
             };
         default:
             return state;
